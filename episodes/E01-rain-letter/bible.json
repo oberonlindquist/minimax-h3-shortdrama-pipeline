@@ -1,0 +1,13 @@
+{
+  "series": "雨夜来信",
+  "aspect_ratio": "9:16",
+  "resolution": "768p",
+  "cast": {
+    "林夏": {"type": "image", "file": "refs/linxia.png", "note": "女主，二十五六岁，齐肩短发，米色风衣；正面半身照，纯色背景"},
+    "周屿": {"type": "image", "file": "refs/zhouyu.png", "note": "旧书店店主，三十岁，圆框眼镜，深灰毛衣"},
+    "旧书店": {"type": "image", "file": "refs/bookstore.png", "note": "场景：窄长的旧书店内景，暖黄台灯，木书架"},
+    "雨夜街口": {"type": "image", "file": "refs/street.png", "note": "场景：雨夜街口，霓虹招牌，积水反光"},
+    "雨声": {"type": "audio", "file": "refs/rain-10s.wav", "note": "环境声：10 秒雨声，用来统一全集的雨"},
+    "推门动作": {"type": "video", "file": "refs/door-push-3s.mp4", "seconds": 3, "note": "动作参考：推门、收伞，3 秒"}
+  }
+}

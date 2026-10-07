@@ -1,8 +1,0 @@
-# MiniMax H3 — Argolink
-
-- Model: minimax-h3
-- Intent: short-drama production workflow
-- Model page: https://argolink.io/gh-minimax-h3-shortdrama-pipeline
-- API docs: https://argolink.io/gh-unified-api-docs
-- Examples: examples/request.sh, examples/client.py
-- Contract: docs/model-contract.md

@@ -1,7 +1,9 @@
 __pycache__/
-*.py[cod]
+.pytest_cache/
+episodes/*/refs/
+episodes/*/renders/
+episodes/*/production.json
+episodes/*/shots.draft.json
+episodes/*/*.mp4
 .env
-.env.*
-!.env.example
-node_modules/
-dist/
+.DS_Store
