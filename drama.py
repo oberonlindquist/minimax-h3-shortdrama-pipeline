@@ -32,6 +32,7 @@ import urllib.error
 import urllib.request
 
 BASE = os.environ.get("H3_BASE_URL", "https://argolink.io/v1").rstrip("/")
+USER_AGENT = "minimax-h3-shortdrama-pipeline/1.0"   # sent on every request, including upload PUTs
 RATE = {"768p": 0.039, "2k": 0.064}            # USD per billed second (model page, 2026-10-07)
 RATIOS = ("21:9", "16:9", "4:3", "1:1", "3:4", "9:16")
 LIST_FIELD = {"image": "reference_images", "video": "reference_videos", "audio": "reference_audios"}
@@ -169,6 +170,7 @@ def cost_rows(ep, bible, shots, draft=False):
 def http(method, url, payload=None, raw=False, auth=True, ctype=None):
     data = payload if isinstance(payload, bytes) or payload is None else json.dumps(payload, ensure_ascii=False).encode()
     req = urllib.request.Request(url, data=data, method=method)
+    req.add_header("User-Agent", USER_AGENT)
     if auth:
         key = os.environ.get("H3_API_KEY")
         if not key:

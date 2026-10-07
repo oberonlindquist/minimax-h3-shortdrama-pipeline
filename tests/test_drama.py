@@ -42,6 +42,7 @@ def api(monkeypatch):
     def urlopen(req, timeout=None):
         url = req.full_url
         log["calls"].append((req.get_method(), url, req.data))
+        log.setdefault("agents", set()).add(req.get_header("User-agent"))
         if url.endswith("/media/uploads"):
             n = len(log["calls"])
             return Reply(json.dumps({"upload_url": f"https://put.test/{n}", "media_url": f"https://cdn.test/{n}"}).encode())
@@ -108,6 +109,7 @@ def test_only_approved_shots_render_and_uploads_are_reused(ep, api):
     state = json.load(open(os.path.join(ep, "production.json")))
     assert state["shots"]["E01-S03"]["status"] == "done"
     assert open(os.path.join(ep, "renders", "E01-S03.mp4"), "rb").read() == b"MP4"
+    assert api["agents"] == {"minimax-h3-shortdrama-pipeline/1.0"}      # uploads, PUTs, submits, polls
 
     api["calls"].clear()
     drama.main(["render", ep])                          # nothing new: same fingerprints, already done
